@@ -74,7 +74,6 @@ class Connection:
 
             # if query is given, execute it
             # otherwise, only connect to the file
-            # if query:
             cursor.execute(query)
 
             # return the fetch result
