@@ -104,6 +104,9 @@ class Database:
             Use this function if you don't want
             any return value.
 
+        Examples:
+            >>> self.execute('select * from tbl')
+
         Args:
             query (str): Execute this query.
 
@@ -119,6 +122,9 @@ class Database:
         Note:
             Use this function if you want the return
             value. Otherwise, use the execute() function.
+
+        Examples:
+            >>> print(self.fetch('select * from tbl'))
 
         Args:
             query (str):

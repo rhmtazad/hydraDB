@@ -87,6 +87,9 @@ class Connection:
             Use this function if you want the return
             value. Otherwise, use the execute() function.
 
+        Examples:
+            >>> print(self.fetch('select * from tbl'))
+
         Args:
             query (str):
 
