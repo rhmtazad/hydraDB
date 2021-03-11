@@ -12,7 +12,7 @@ setup(
     name='hydradb',
     version='2.0',
     packages=['hydra'],
-    url='',
+    url='https://github.com/rhmtazad/hydradb',
     license='MIT License',
     classifiers=classifiers,
     author='Rahmat Azad',
