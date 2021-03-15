@@ -57,7 +57,7 @@ class Column:
                 and the next part represents the data type.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns nothing.
         """
 
         # iterate through **columns and execute the query
@@ -90,7 +90,7 @@ class Column:
             reference_col (str): Refer the foreign key in this column.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns nothing.
         """
 
         # query for adding a foreign key column
@@ -121,7 +121,7 @@ class Column:
             new_name (str): New name for the column.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns nothing.
         """
 
         # query for renaming a column

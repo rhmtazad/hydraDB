@@ -1,5 +1,5 @@
-from hydra.connection import Connection
-from hydra.table import Table
+from .connection import Connection
+from .table import Table
 
 
 class Database:
@@ -14,8 +14,8 @@ class Database:
             left empty, the database will be created with 'main' name.
 
         Examples:
-            >>> self.db = Database('name', 'directory...')
-            >>> self.db = Database() # or empty parameters
+            >>> self.__db = Database('name', 'directory...')
+            >>> self.__db = Database() # or empty parameters
 
         Args:
             name (str, optional): Create the database with this name.
@@ -30,10 +30,10 @@ class Database:
         """
 
         # use aggregation for Connection class
-        self.__con = Connection(name, location)
+        self.con = Connection(name, location)
 
         # use aggregation for Table class
-        self.tbl = Table(self.__con)
+        self.tbl = Table(self.con)
 
     def __str__(self):
         """
@@ -75,7 +75,7 @@ class Database:
                 and the next part represents data type.
 
         Returns:
-            Returns the fetch result after executing the queries.
+            Returns nothing.
         """
 
         # name of the temporary table
@@ -93,43 +93,3 @@ class Database:
 
         # drop the temp table
         self.tbl.drop(temp)
-
-    def execute(self, query):
-        """
-        Execute the given query.
-
-        Note:
-            This function is a copy of the one
-            that exists in the connection class.
-            Use this function if you don't want
-            any return value.
-
-        Examples:
-            >>> self.execute('select * from tbl')
-
-        Args:
-            query (str): Execute this query.
-
-        Returns:
-            Returns nothing.
-        """
-        self.__con.execute(query)
-
-    def fetch(self, query):
-        """
-        Execute a query and return the fetch result.
-
-        Note:
-            Use this function if you want the return
-            value. Otherwise, use the execute() function.
-
-        Examples:
-            >>> print(self.fetch('select * from tbl'))
-
-        Args:
-            query (str):
-
-        Returns:
-            Returns the fetch result after executing a query
-        """
-        return self.__con.fetch(query)

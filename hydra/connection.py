@@ -1,5 +1,5 @@
 import sqlite3
-from hydra.file import File
+from .file import File
 
 
 class Connection:
@@ -48,7 +48,7 @@ class Connection:
 
         return self.__init__.__doc__
 
-    def execute(self, query):
+    def execute(self, query, fetch=False):
         """
         Connect to the '.db' file and execute a query.
 
@@ -61,10 +61,14 @@ class Connection:
             >>> self.execute('select * from tbl')
 
         Args:
+            fetch (): Return the fetch result, if values
+                is passed as true.
             query (str): Execute the given query.
 
         Returns:
             Returns the fetch result after executing a query.
+            To return the fetch result, the second parameter
+            must be set to True.
         """
 
         # use context manager for connection
@@ -76,8 +80,9 @@ class Connection:
             # otherwise, only connect to the file
             cursor.execute(query)
 
-            # return the fetch result
-            return cursor.fetchall()
+            # return the fetch result if asked for
+            if fetch:
+                return cursor.fetchall()
 
     def fetch(self, query):
         """
@@ -91,9 +96,9 @@ class Connection:
             >>> print(self.fetch('select * from tbl'))
 
         Args:
-            query (str):
+            query (str): Fetch this query and return the resutl.
 
         Returns:
             Returns the fetch result after executing a query
         """
-        return self.execute(query)
+        return self.execute(query, fetch=True)

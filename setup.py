@@ -13,9 +13,9 @@ with open("README.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name='hydradb',
-    version='2.1',
+    version='2.2',
     packages=['hydra'],
-    url='https://github.com/rhmtazad/hydradb',
+    url='https://github.com/rhmtazad/hydraDB',
     license='MIT License',
     classifiers=classifiers,
     author='Rahmat Azad',

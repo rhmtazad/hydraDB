@@ -55,7 +55,7 @@ class Row:
                 name and the next part represents data type.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns nothing.
         """
 
         # get column names join them using comma
@@ -75,7 +75,7 @@ class Row:
 
     def delete(self, table, row_id):
         """
-        Delete a table from the database.
+        Delete a row from a table.
 
         Note:
             Pass the table name in the first parameter and
@@ -89,7 +89,7 @@ class Row:
             row_id (int): Delete row with this primary key.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns nothing.
         """
 
         # structure of the primary key
@@ -130,26 +130,21 @@ class Row:
                 and the next part represents data.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns nothing.
         """
 
-        # iterate through cells in a row and execute the query
-        for column, val in data.items():
-            # check if the value is a string or numerical
-            is_numerical = type(val) is int or type(val) is float
+        # store columns and their values
+        column_value = "".join(f"{col}='{val}'," for (col, val) in data.items())[0:-1]
 
-            # if value is string, add a quotation around it
-            value = val if is_numerical else f"'{val}'"
+        # structure for primary key
+        primary_key = f"{table}_id"
 
-            # structure for the primary key
-            primary_key = f"{table}_id"
+        # query for updating row(s) in a table
+        query = f'''
+            UPDATE {table}
+            SET {column_value}
+            WHERE {primary_key} = {row_id}
+        ;'''
 
-            # query for updating row(s) in a table
-            query = f'''
-                UPDATE {table}
-                SET {column} = {value}
-                WHERE {primary_key} = {row_id}
-            ;'''
-
-            # execute the query
-            self.__con.execute(query)
+        # execute the query
+        self.__con.execute(query)

@@ -1,5 +1,5 @@
-from hydra.column import Column
-from hydra.row import Row
+from .column import Column
+from .row import Row
 
 
 class Table:
@@ -60,7 +60,7 @@ class Table:
         Args:
             *tables (:obj:`list`): Add the given tables.
 
-        Returns: Returns the fetch result after executing the query.
+        Returns: Returns nothing.
         """
 
         # iterate through **tables and execute the query
@@ -91,7 +91,7 @@ class Table:
             *tables (:obj:`list`): Drop one or many tables.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns nothing.
         """
 
         # iterate through **tables parameter and execute the query
@@ -119,7 +119,7 @@ class Table:
             new_name (str): New name for the given table.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns nothing.
         """
 
         # query for renaming a table
@@ -153,7 +153,7 @@ class Table:
                 and the next part represents data type.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns nothing.
         """
 
         # create the table
@@ -186,7 +186,7 @@ class Table:
                 and the next part represents data type.
 
         Returns:
-            Returns the fetch result after executing the queries.
+            Returns nothing.
         """
 
         # store the column names by joining them using comma
