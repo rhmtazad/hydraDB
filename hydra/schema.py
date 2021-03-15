@@ -27,6 +27,13 @@ class Schema:
                 Defaults to 'main'.
             location (str, optional): Create the database in this location.
                 Defaults to the current working directory.
+
+        Attributes:
+            self.__con(:obj:`Connection`): Aggregate Connection object.
+            self.__db(:obj:`Database`): Aggregate Database object.
+            self.__tbl(:obj:`Table`): Aggregate Table object.
+            self.__col(:obj:`Column`): Aggregate Column object.
+            self.__row(:obj:`Row`): Aggregate Row object.
         """
 
         # aggregate the Connection object
