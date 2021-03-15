@@ -1,4 +1,8 @@
+from .connection import Connection
 from .database import Database
+from .table import Table
+from .column import Column
+from .row import Row
 
 
 class Schema:
@@ -19,12 +23,216 @@ class Schema:
             >>> db.add_table('tbl1', 'tbl2') # access to operations
 
         Args:
-            name (str): Create the database with this name.
-            location (str): Create the database in this location.
+            name (str, optional): Create the database with this name.
+                Defaults to 'main'.
+            location (str, optional): Create the database in this location.
+                Defaults to the current working directory.
         """
 
+        # aggregate the Connection object
+        self.__con = Connection(name, location)
+
         # aggregate the database object
-        self.__db = Database(name, location)
+        self.__db = Database(self.__con)
+
+        # aggregate the Table object
+        self.__tbl = Table(self.__con)
+
+        # aggregate the Column object
+        self.__col = Column(self.__con)
+
+        # aggregate the Row object
+        self.__row = Row(self.__con)
+
+    def execute(self, query):
+        """
+        Connect to the '.db' file and execute a query.
+
+        Note:
+            Pass the query to execute it. If parameters are empty,
+            it will only connect to the file.
+
+        Examples:
+            >>> self.execute("")
+            >>> self.execute('select * from tbl')
+
+        Args:
+            query (str): Execute the given query.
+
+        Returns:
+            Returns the fetch result after executing a query.
+            To return the fetch result, the second parameter
+            must be set to True.
+        """
+
+        self.__con.execute(query)
+
+    def fetch(self, query):
+        """
+        Execute a query and return the fetch result.
+
+        Note:
+            Use this function if you want the return
+            value. Otherwise, use the execute() function.
+
+        Examples:
+            >>> print(self.fetch('select * from tbl'))
+
+        Args:
+            query (str): Fetch this query and return the result.
+
+        Returns:
+            Returns the fetch result after executing a query
+        """
+
+        self.__con.fetch(query)
+
+    def add_table(self, *tables):
+        """
+        Add a table in the database.
+
+        Note:
+            Add one or many tables at once. Make sure to separate
+            their names while passing as a parameter.
+
+        Examples:
+            >>> self.add_table('tbl1', 'tbl2', 'tbl3')
+
+        Args:
+            *tables (:obj:`list`): Add the given tables.
+
+        Returns: Returns nothing.
+        """
+
+        self.__tbl.add(*tables)
+
+    def drop_table(self, *tables):
+        """
+        Drop a table from the database.
+
+        Note:
+            Pass one or many table names as parameters to drop them.
+
+        Examples:
+            >>> self.drop_table('tbl1', 'tbl2', 'tbl3')
+
+        Args:
+            *tables (:obj:`list`): Drop one or many tables.
+
+        Returns:
+            Returns nothing.
+        """
+
+        self.__tbl.drop(*tables)
+
+    def rename_table(self, old_name, new_name):
+        """
+        Rename an existing table in the database.
+
+        Note:
+            Pass the name of an existing table in the
+            first parameter and the new name in the
+            second parameter.
+
+        Examples:
+            >>> self.rename_table('old_name', 'new_name')
+
+        Args:
+            old_name (str): Rename this table.
+            new_name (str): New name for the given table.
+
+        Returns:
+            Returns nothing.
+        """
+
+        self.__tbl.rename(old_name, new_name)
+
+    def form_table(self, table, **columns):
+        """
+        Create a table with the given column names and data types.
+
+        Note:
+            Pass the table name in the first parameter and the column
+            names along with their data types in the second parameter.
+            If you want to add a foreign key column, do not include
+            the column name here. Instead, create the table with normal
+            columns and then use 'add_fk()' function from the Column
+            class to add a new column with a foreign key constraint.
+
+        Examples:
+            >>> self.form_table('tbl', col1='text', col2='integer')
+
+        Args:
+            table (str): Create this table.
+            **columns (:obj:`kwargs`): Add these columns to the table.
+
+        Keyword Args:
+            **columns (:obj:`kwargs`): Form table using the given
+                columns. The first part in key='val' represents column name
+                and the next part represents data type.
+
+        Returns:
+            Returns nothing.
+        """
+
+        self.__tbl.form(table, **columns)
+
+    def copy_table(self, origin_tbl, new_tbl, **columns):
+        """
+        Copy an existing table into a new one.
+
+        Note:
+            Pass the name of the original table in the first
+            parameter and the name of the new table in the second
+            parameter. Also, pass the name of the columns that you want
+            to copy along with their data types in the third parameter.
+
+        Examples:
+            >>> self.copy_table('tbl', 'new_tbl', col1='text', col2='integer')
+
+        Args:
+            origin_tbl (str): Copy this table.
+            new_tbl (str): Copy the old table in this table.
+            **columns (:obj:`kwargs`):
+
+        Keyword Args:
+            **columns (:obj:`kwargs`): Keep the given columns.
+                The first part in key='val' represents the column name
+                and the next part represents data type.
+
+        Returns:
+            Returns nothing.
+        """
+
+        self.__tbl.copy(origin_tbl, new_tbl, **columns)
+
+    def add_column(self, table, **columns):
+        """
+        Add a column in a table.
+
+        Note:
+            Pass the table name in the first parameter
+            and pass the columns and data types in the
+            second parameter. Also, pass as many columns
+            as you want.
+
+        Examples:
+            >>> self.add_column('tbl', col1='text', col2='integer')
+
+        Args:
+            table (str): Add columns to this table.
+            **columns (:obj:`kwargs`): Add columns with data types.
+
+        Keyword Args:
+            **columns (:obj:`kwargs`): Create the given columns.
+                The first part in key='val' represents the column name
+                and the next part represents the data type.
+
+        Returns:
+            Returns nothing.
+        """
+
+        self.__col.add(table, **columns)
 
     def drop_column(self, table, **columns):
         """
@@ -57,196 +265,6 @@ class Schema:
 
         self.__db.drop_col(table, **columns)
 
-    def execute(self, query):
-        """
-        Connect to the '.db' file and execute a query.
-
-        Note:
-            Pass the query to execute it. If parameters are empty,
-            it will only connect to the file.
-
-        Examples:
-            >>> self.execute("")
-            >>> self.execute('select * from tbl')
-
-        Args:
-            query (str): Execute the given query.
-
-        Returns:
-            Returns the fetch result after executing a query.
-            To return the fetch result, the second parameter
-            must be set to True.
-        """
-
-        self.__db.con.execute(query)
-
-    def fetch(self, query):
-        """
-        Execute a query and return the fetch result.
-
-        Note:
-            Use this function if you want the return
-            value. Otherwise, use the execute() function.
-
-        Examples:
-            >>> print(self.fetch('select * from tbl'))
-
-        Args:
-            query (str): Fetch this query and return the resutl.
-
-        Returns:
-            Returns the fetch result after executing a query
-        """
-
-        self.__db.con.fetch(query)
-
-    def add_table(self, *tables):
-        """
-        Add a table in the database.
-
-        Note:
-            Add one or many tables at once. Make sure to separate
-            their names while passing as a parameter.
-
-        Examples:
-            >>> self.add_table('tbl1', 'tbl2', 'tbl3')
-
-        Args:
-            *tables (:obj:`list`): Add the given tables.
-
-        Returns: Returns nothing.
-        """
-
-        self.__db.tbl.add(*tables)
-
-    def drop_table(self, *tables):
-        """
-        Drop a table from the database.
-
-        Note:
-            Pass one or many table names as parameters to drop them.
-
-        Examples:
-            >>> self.drop_table('tbl1', 'tbl2', 'tbl3')
-
-        Args:
-            *tables (:obj:`list`): Drop one or many tables.
-
-        Returns:
-            Returns nothing.
-        """
-
-        self.__db.tbl.drop(*tables)
-
-    def rename_table(self, old_name, new_name):
-        """
-        Rename an existing table in the database.
-
-        Note:
-            Pass the name of an existing table in the
-            first parameter and the new name in the
-            second parameter.
-
-        Examples:
-            >>> self.rename_table('old_name', 'new_name')
-
-        Args:
-            old_name (str): Rename this table.
-            new_name (str): New name for the given table.
-
-        Returns:
-            Returns nothing.
-        """
-
-        self.__db.tbl.rename(old_name, new_name)
-
-    def form_table(self, table, **columns):
-        """
-        Create a table with the given column names and data types.
-
-        Note:
-            Pass the table name in the first parameter and the column
-            names along with their data types in the second parameter.
-            If you want to add a foreign key column, do not include
-            the column name here. Instead, create the table with normal
-            columns and then use 'add_fk()' function from the Column
-            class to add a new column with a foreign key constraint.
-
-        Examples:
-            >>> self.form_table('tbl', col1='text', col2='integer')
-
-        Args:
-            table (str): Create this table.
-            **columns (:obj:`kwargs`): Add these columns to the table.
-
-        Keyword Args:
-            **columns (:obj:`kwargs`): Form table using the given
-                columns. The first part in key='val' represents column name
-                and the next part represents data type.
-
-        Returns:
-            Returns nothing.
-        """
-
-        self.__db.tbl.form(table, **columns)
-
-    def copy_table(self, origin_tbl, new_tbl, **columns):
-        """
-        Copy an existing table into a new one.
-
-        Note:
-            Pass the name of the original table in the first
-            parameter and the name of the new table in the second
-            parameter. Also, pass the name of the columns that you want
-            to copy along with their data types in the third parameter.
-
-        Examples:
-            >>> self.copy_table('tbl', 'new_tbl', col1='text', col2='integer')
-
-        Args:
-            origin_tbl (str): Copy this table.
-            new_tbl (str): Copy the old table in this table.
-            **columns (:obj:`kwargs`):
-
-        Keyword Args:
-            **columns (:obj:`kwargs`): Keep the given columns.
-                The first part in key='val' represents the column name
-                and the next part represents data type.
-
-        Returns:
-            Returns nothing.
-        """
-
-        self.__db.tbl.copy(origin_tbl, new_tbl, **columns)
-
-    def add_column(self, table, **columns):
-        """
-        Add a column in a table.
-
-        Note:
-            Pass the table name in the first parameter
-            and pass the columns and data types in the
-            second parameter. Also, pass as many columns
-            as you want.
-
-        Examples:
-            >>> self.add_column('tbl', col1='text', col2='integer')
-
-        Args:
-            table (str): Add columns to this table.
-            **columns (:obj:`kwargs`): Add columns with data types.
-
-        Keyword Args:
-            **columns (:obj:`kwargs`): Create the given columns.
-                The first part in key='val' represents the column name
-                and the next part represents the data type.
-
-        Returns:
-            Returns nothing.
-        """
-
-        self.__db.tbl.col.add(table, **columns)
-
     def add_fk(self, table, column, reference, reference_col):
         """
         Add a column and set it as a foreign key.
@@ -269,7 +287,7 @@ class Schema:
             Returns nothing.
         """
 
-        self.__db.tbl.col.add_fk(table, column, reference, reference_col)
+        self.__col.add_fk(table, column, reference, reference_col)
 
     def rename_column(self, tbl, current_name, new_name):
         """
@@ -292,7 +310,7 @@ class Schema:
             Returns nothing.
         """
 
-        self.__db.tbl.col.rename(tbl, current_name, new_name)
+        self.__col.rename(tbl, current_name, new_name)
 
     def insert_row(self, table, **data):
         """
@@ -318,7 +336,7 @@ class Schema:
             Returns nothing.
         """
 
-        self.__db.tbl.row.insert(table, **data)
+        self.__row.insert(table, **data)
 
     def delete_row(self, table, row_id):
         """
@@ -339,7 +357,7 @@ class Schema:
             Returns nothing.
         """
 
-        self.__db.tbl.row.delete(table, row_id)
+        self.__row.delete(table, row_id)
 
     def update_row(self, table, row_id, **data):
         """
@@ -370,4 +388,4 @@ class Schema:
             Returns nothing.
         """
 
-        self.__db.tbl.row.update(table, row_id, **data)
+        self.__row.update(table, row_id, **data)

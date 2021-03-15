@@ -1,36 +1,35 @@
-from .connection import Connection
 from .table import Table
 
 
 class Database:
-    def __init__(self, name=None, location=None):
+    def __init__(self, connection):
         """
         Create a database with a given name and location.
 
         Note:
-            Make an instance of this class and pass the name and location.
-            If you want to create the database in your working directory,
-            you can leave the second parameter empty. Also, if the name is
-            left empty, the database will be created with 'main' name.
+            the proper way to use this API is to create
+            an instance of the Schema object. However, if you
+            want to make an instance of this class, pass the name
+            and location. If you want to create the database in your
+            working directory, you can leave the second parameter empty.
+            Also, if the name is left empty, the database will be
+            created with 'main' name.
 
         Examples:
             >>> self.__db = Database('name', 'directory...')
             >>> self.__db = Database() # or empty parameters
 
         Args:
-            name (str, optional): Create the database with this name.
-                Defaults to 'main'.
-
-            location (str, optional): Create the database in this location.
-                Defaults to the current working directory.
+            connection (:obj:`Connection`): Create the database using this
+                connection.
 
         Attributes:
-            self.__con (:obj:`Connection`): Aggregates the Connection class.
+            self.__con (:obj:`Connection`): Use composition for Connection.
             self.__tbl (:obj:`Table`): Aggregates the Table class.
         """
 
-        # use aggregation for Connection class
-        self.con = Connection(name, location)
+        # use composition for Connection class
+        self.con = connection
 
         # use aggregation for Table class
         self.tbl = Table(self.con)

@@ -11,3 +11,17 @@ if __name__ == '__main__':
         name='text',
         age='integer'
     )
+
+    # insert a row in a table
+    db.insert_row(
+        'student',
+        name='R',
+        age=47
+    )
+
+    # update a row from a table
+    db.update_row(
+        'student', 2,
+        name='A',
+        age=25
+    )

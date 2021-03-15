@@ -61,8 +61,8 @@ class Connection:
             >>> self.execute('select * from tbl')
 
         Args:
-            fetch (): Return the fetch result, if values
-                is passed as true.
+            fetch (bool, optional): Return the fetch result, if values
+                is passed as true. Otherwise, it returns nothing.
             query (str): Execute the given query.
 
         Returns:
@@ -96,7 +96,7 @@ class Connection:
             >>> print(self.fetch('select * from tbl'))
 
         Args:
-            query (str): Fetch this query and return the resutl.
+            query (str): Fetch this query and return the result.
 
         Returns:
             Returns the fetch result after executing a query
