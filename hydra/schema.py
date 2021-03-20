@@ -272,7 +272,7 @@ class Schema:
 
         self.__db.drop_col(table, **columns)
 
-    def add_fk(self, table, column, reference, reference_col):
+    def add_fk(self, table, column, reference_tbl, reference_col):
         """
         Add a column and set it as a foreign key.
 
@@ -287,14 +287,14 @@ class Schema:
         Args:
             table (str): Add a foreign key column to this table.
             column (str): Add this new column as a foreign key.
-            reference (str): Refer the foreign key in this table.
+            reference_tbl (str): Refer the foreign key in this table.
             reference_col (str): Refer the foreign key in this column.
 
         Returns:
             Returns nothing.
         """
 
-        self.__col.add_fk(table, column, reference, reference_col)
+        self.__col.add_fk(table, column, reference_tbl, reference_col)
 
     def rename_column(self, tbl, current_name, new_name):
         """
