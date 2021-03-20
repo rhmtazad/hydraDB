@@ -5,6 +5,7 @@ Change Log
 2.2 (15/3/2021)
 ----------------------------------------------
 - Third Release
+
 - Applied a facade pattern (Schema)
 - Easy access to operations through Schema
 - Inserting or updating rows is much faster
@@ -15,6 +16,7 @@ Change Log
 2.1 (11/3/2021)
 ----------------------------------------------
 - Second Release
+
 - Efficient Connection
 - Effiecient Data Insertion
 - New Features
