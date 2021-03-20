@@ -71,7 +71,7 @@ class Column:
             # execute the query
             self.__con.execute(query)
 
-    def add_fk(self, table, column, reference, reference_col):
+    def add_fk(self, table, column, reference_tbl, reference_col):
         """
         Add a column and set it as a foreign key.
 
@@ -86,7 +86,7 @@ class Column:
         Args:
             table (str): Add a foreign key column to this table.
             column (str): Add this new column as a foreign key.
-            reference (str): Refer the foreign key in this table.
+            reference_tbl (str): Refer the foreign key in this table.
             reference_col (str): Refer the foreign key in this column.
 
         Returns:
@@ -97,13 +97,13 @@ class Column:
         query = f'''
             ALTER TABLE {table}
             ADD COLUMN {column} INTEGER
-            REFERENCES {reference}({reference_col})
+            REFERENCES {reference_tbl}({reference_col})
         ;'''
 
         # execute the query
         self.__con.execute(query)
 
-    def rename(self, tbl, current_name, new_name):
+    def rename(self, table, current_name, new_name):
         """
         Rename a column in a table.
 
@@ -116,7 +116,7 @@ class Column:
             >>> self.rename('tbl', 'col_name', 'new_col')
 
         Args:
-            tbl (str): Rename a column from this table.
+            table (str): Rename a column from this table.
             current_name (str): Rename this column.
             new_name (str): New name for the column.
 
@@ -126,7 +126,7 @@ class Column:
 
         # query for renaming a column
         query = f'''
-            ALTER TABLE {tbl}
+            ALTER TABLE {table}
             RENAME COLUMN {current_name}
             TO {new_name}
         ;'''
