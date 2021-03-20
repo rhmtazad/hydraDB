@@ -1,8 +1,5 @@
-from .table import Table
-
-
 class Database:
-    def __init__(self, connection):
+    def __init__(self, connection, table):
         """
         Create a database with a given name and location.
 
@@ -25,14 +22,14 @@ class Database:
 
         Attributes:
             self.__con (:obj:`Connection`): Use composition for Connection.
-            self.__tbl (:obj:`Table`): Aggregates the Table class.
+            self.__tbl (:obj:`Table`): Use composition for the Table class.
         """
 
         # use composition for Connection class
         self.con = connection
 
-        # use aggregation for Table class
-        self.tbl = Table(self.con)
+        # use composition for Table class
+        self.tbl = table
 
     def __str__(self):
         """

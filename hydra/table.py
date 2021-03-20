@@ -1,9 +1,5 @@
-from .column import Column
-from .row import Row
-
-
 class Table:
-    def __init__(self, connection):
+    def __init__(self, connection, row, column):
         """
         Add, drop, copy, or modify a table.
 
@@ -21,16 +17,16 @@ class Table:
 
         Attributes:
               self.__con (:obj:`Connection`): Connect using composition.
-              self.col(:obj:`Column`): Aggregate Column class.
-              self.row(:obj:`Row`): Aggregate Row class.
+              self.col(:obj:`Column`): Use composition for Column class.
+              self.row(:obj:`Row`): Use composition for Row class.
         """
 
         # use composition for connection
         self.__con = connection
 
-        # use aggregation for column and row
-        self.col = Column(self.__con)
-        self.row = Row(self.__con)
+        # Use composition for column and row
+        self.col = column
+        self.row = row
 
     def __str__(self):
         """
@@ -178,7 +174,7 @@ class Table:
         Args:
             origin_tbl (str): Copy this table.
             new_tbl (str): Copy the old table in this table.
-            **columns (:obj:`kwargs`):
+            **columns (:obj:`kwargs`): Keep these columns.
 
         Keyword Args:
             **columns (:obj:`kwargs`): Keep the given columns.

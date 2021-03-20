@@ -81,8 +81,7 @@ class Connection:
             cursor.execute(query)
 
             # return the fetch result if asked for
-            if fetch:
-                return cursor.fetchall()
+            return cursor.fetchall() if fetch else None
 
     def fetch(self, query):
         """

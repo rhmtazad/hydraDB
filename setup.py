@@ -20,7 +20,7 @@ setup(
     classifiers=classifiers,
     author='Rahmat Azad',
     author_email='rhmtazad@gmail.com',
-    description='Manage SQLite/Python operations much faster and easier using this API',
+    description='An API for faster and easier SQLite/Python operations',
     long_description=long_description,
     long_description_content_type='text/markdown',
     install_requires=['']

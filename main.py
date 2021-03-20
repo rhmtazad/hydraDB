@@ -6,11 +6,11 @@ if __name__ == '__main__':
     db = Schema()
 
     # add a table with given columns
-    db.form_table(
-        'student',
-        name='text',
-        age='integer'
-    )
+    # db.form_table(
+    #     'student',
+    #     name='text',
+    #     age='integer'
+    # )
 
     # insert a row in a table
     db.insert_row(
@@ -20,8 +20,10 @@ if __name__ == '__main__':
     )
 
     # update a row from a table
-    db.update_row(
-        'student', 2,
-        name='A',
-        age=25
-    )
+    # db.update_row(
+    #     'student', 2,
+    #     name='A',
+    #     age=25
+    # )
+
+    print(db.fetch("select * from student"))

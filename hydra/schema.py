@@ -1,8 +1,8 @@
 from .connection import Connection
-from .database import Database
-from .table import Table
-from .column import Column
 from .row import Row
+from .column import Column
+from .table import Table
+from .database import Database
 
 
 class Schema:
@@ -39,17 +39,17 @@ class Schema:
         # aggregate the Connection object
         self.__con = Connection(name, location)
 
-        # aggregate the database object
-        self.__db = Database(self.__con)
-
-        # aggregate the Table object
-        self.__tbl = Table(self.__con)
+        # aggregate the Row object
+        self.__row = Row(self.__con)
 
         # aggregate the Column object
         self.__col = Column(self.__con)
 
-        # aggregate the Row object
-        self.__row = Row(self.__con)
+        # aggregate the Table object
+        self.__tbl = Table(self.__con, self.__row, self.__col)
+
+        # aggregate the database object
+        self.__db = Database(self.__con, self.__tbl)
 
     def execute(self, query):
         """
@@ -92,7 +92,7 @@ class Schema:
             Returns the fetch result after executing a query
         """
 
-        self.__con.fetch(query)
+        return self.__con.fetch(query)
 
     def add_table(self, *tables):
         """

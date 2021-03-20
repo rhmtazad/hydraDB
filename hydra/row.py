@@ -104,6 +104,7 @@ class Row:
         # execute the query
         self.__con.execute(query)
 
+    # TODO: check if the function works!
     def update(self, table, row_id, **data):
         """
         Update a row in a table.
@@ -134,7 +135,9 @@ class Row:
         """
 
         # store columns and their values
-        column_value = "".join(f"{col}='{val}'," for (col, val) in data.items())[0:-1]
+        columns_values = "".join(
+            f"{col}='{val}'," for (col, val) in data.items()
+        )[0:-1]
 
         # structure for primary key
         primary_key = f"{table}_id"
@@ -142,7 +145,7 @@ class Row:
         # query for updating row(s) in a table
         query = f'''
             UPDATE {table}
-            SET {column_value}
+            SET {columns_values}
             WHERE {primary_key} = {row_id}
         ;'''
 
