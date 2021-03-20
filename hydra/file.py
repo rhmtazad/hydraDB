@@ -29,8 +29,13 @@ class File:
                 a full directory address of the SQLite file.
         """
 
+        # store the name of the file, default to 'main'
         self.__name = name or 'main'
+
+        # store the location of the file, default to current directory
         self.__location = location or self.current_directory()
+
+        # store full directory address of the file
         self.__full_directory = f"{self.__location}/{self.__name}.db"
 
     def __str__(self):
