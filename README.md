@@ -15,7 +15,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ## Requirements
 
-To make hydraDB work properly you must have:
+To make hydraDB work properly you must have installed:
 
 - [Python 3.9] - Latest version of Python
 - [SQLite3] - Latest version of SQLite3
