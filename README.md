@@ -1,4 +1,4 @@
-# HydraDB v2.2
+# HydraDB v2.3
 ## An API for faster and easier SQLite/Python operations.
 
 HydraDB is an API built for Python and SQLite to help build databases faster and easier.
@@ -7,11 +7,11 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ## Features
 
-- Add/drop or modify table(s)
+- Add, drop, modify, or fetch table(s)
 - Copy a table and keep the desired column(s)
-- Add/drop or modify column(s)
+- Add,drop, modify, or fetch column(s)
 - Add foreign key column
-- Add/delete or modify a row
+- Add,delete, modify, or fetch a row
 
 ## Requirements
 

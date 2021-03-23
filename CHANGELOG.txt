@@ -1,6 +1,16 @@
 Change Log
 ==============================================
 
+2.3 (23/3/2021)
+-----------------------------------------------
+- Fourth Release
+
+- Fetch a column from a table
+- Fetch a row from a table
+- Fetch a table from the database
+- Improved code quality
+- Added missing documentation
+
 
 2.2 (15/3/2021)
 ----------------------------------------------
