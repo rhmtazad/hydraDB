@@ -198,3 +198,26 @@ class Table:
 
         # execute the query
         self.__con.execute(query)
+
+    def fetch(self, table):
+        """
+        Fetch a table from the database.
+
+        Note:
+            Pass the table name as a parameter
+        
+        Examples:
+            >>> self.fetch('table_name')
+        
+        Args:
+            table (str): Fetch data from this table.
+
+        Returns:
+            Returns the fetch result after executing the query.
+        """
+
+        # query for getting data from a table
+        query = f'SELECT * FROM {table}'
+
+        # return the fetch result after executing the query
+        return self.__con.fetch(query)

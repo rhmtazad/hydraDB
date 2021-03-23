@@ -1,8 +1,8 @@
-from .connection import Connection
-from .row import Row
 from .column import Column
-from .table import Table
+from .connection import Connection
 from .database import Database
+from .row import Row
+from .table import Table
 
 
 class Schema:
@@ -213,6 +213,25 @@ class Schema:
 
         self.__tbl.copy(origin_tbl, new_tbl, **columns)
 
+    def fetch_table(self, table):
+        """
+        Fetch a table from the database.
+
+        Note:
+            Pass the table name as a parameter
+
+        Examples:
+            >>> self.fetch_table('table_name')
+
+        Args:
+            table (str): Fetch data from this table.
+
+        Returns:
+            Returns the fetch result after executing the query.
+        """
+
+        return self.__tbl.fetch(table)
+
     def add_column(self, table, **columns):
         """
         Add a column in a table.
@@ -319,6 +338,27 @@ class Schema:
 
         self.__col.rename(tbl, current_name, new_name)
 
+    def fetch_columns(self, table, *columns):
+        """
+        Fetch column(s) from a table.
+
+        Note:
+            Pass the table name in the first parameter
+            and the column name(s) in the next parameters.
+
+        Examples:
+            >>> self.fetch_columns('tbl', 'col1', 'col2')
+
+        Args:
+            table (str): Fetch column(s) from this table.
+            *columns (:obj:`list`): Fetch these columns from a table.
+
+        Returns:
+            Returns the fetch result after executing the query.
+        """
+
+        return self.__col.fetch(table, *columns)
+
     def insert_row(self, table, **data):
         """
         Insert data in a table.
@@ -396,3 +436,24 @@ class Schema:
         """
 
         self.__row.update(table, row_id, **data)
+
+    def fetch_row(self, table, row_id):
+        """
+        Fetch a row from a table
+
+        Note:
+            Pass the table name in the first parameter
+            and the row ID in the second parameter.
+
+        Examples:
+            >>> self.fetch_row('table_name', 1)
+
+        Args:
+            table (str): Fetch a row from this table.
+            row_id (int): Fetch a row with this ID.
+
+        Returns:
+            Returns the fetch result after executing the query.
+        """
+
+        return self.__row.fetch(table, row_id)

@@ -97,14 +97,13 @@ class Row:
 
         # query for deleting a row from a table
         query = f'''
-           delete from {table}
-           where {primary_key} = {row_id}
+           DELETE FROM {table}
+           WHERE {primary_key} = {row_id}
         ;'''
 
         # execute the query
         self.__con.execute(query)
 
-    # TODO: check if the function works!
     def update(self, table, row_id, **data):
         """
         Update a row in a table.
@@ -151,3 +150,31 @@ class Row:
 
         # execute the query
         self.__con.execute(query)
+
+    def fetch(self, table, row_id):
+        """
+        Fetch a row from a table
+
+        Note:
+            Pass the table name in the first parameter
+            and the row ID in the second parameter.
+
+        Examples:
+            >>> self.fetch('table_name', 1)
+
+        Args:
+            table (str): Fetch a row from this table.
+            row_id (int): Fetch a row with this ID.
+
+        Returns:
+            Returns the fetch result after executing the query.
+        """
+
+        # structure for the primary key
+        primary_key = f'{table}_id'
+
+        # query for fetching a row from a table
+        query = f'SELECT * FROM {table} WHERE {primary_key} = {row_id}'
+
+        # execute the query and return the result
+        return self.__con.fetch(query)

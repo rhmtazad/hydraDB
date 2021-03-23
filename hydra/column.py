@@ -133,3 +133,31 @@ class Column:
 
         # execute the query
         self.__con.execute(query)
+
+    def fetch(self, table, *columns):
+        """
+        Fetch column(s) from a table.
+
+        Note:
+            Pass the table name in the first parameter
+            and the column name(s) in the next parameters.
+
+        Examples:
+            >>> self.fetch('tbl', 'col1', 'col2')
+
+        Args:
+            table (str): Fetch column(s) from this table.
+            *columns (:obj:`list`): Fetch these columns from a table.
+
+        Returns:
+            Returns the fetch result after executing the query.
+        """
+
+        # store column names to be fetched
+        columns = ', '.join(columns)
+
+        # query for fetching one or more columns
+        query = f'SELECT {columns} FROM {table}'
+
+        # return the fetch result after executing the query.
+        return self.__con.fetch(query)
