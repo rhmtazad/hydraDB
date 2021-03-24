@@ -9,9 +9,9 @@ This API applies some design patterns of object-oriented programming to make it 
 
 - Add, drop, modify, or fetch table(s)
 - Copy a table and keep the desired column(s)
-- Add,drop, modify, or fetch column(s)
+- Add, drop, modify, or fetch column(s)
 - Add foreign key column
-- Add,delete, modify, or fetch a row
+- Add, delete, modify, or fetch a row
 
 ## Requirements
 
@@ -22,7 +22,7 @@ To make hydraDB work properly you must have installed:
 
 ## Installation
 
-You can install through pip or through copying inside your project folder.
+You can install through pip or by copying inside your project folder.
 
 ```sh
 pip install hydradb
