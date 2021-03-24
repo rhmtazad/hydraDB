@@ -207,7 +207,7 @@ class Table:
             Pass the table name as a parameter
         
         Examples:
-            >>> self.fetch('table_name')
+            >>> print(self.fetch('table_name'))
         
         Args:
             table (str): Fetch data from this table.

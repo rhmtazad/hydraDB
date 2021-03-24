@@ -143,7 +143,7 @@ class Column:
             and the column name(s) in the next parameters.
 
         Examples:
-            >>> self.fetch('tbl', 'col1', 'col2')
+            >>> print(self.fetch('tbl', 'col1', 'col2'))
 
         Args:
             table (str): Fetch column(s) from this table.

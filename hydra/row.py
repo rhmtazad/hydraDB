@@ -160,7 +160,7 @@ class Row:
             and the row ID in the second parameter.
 
         Examples:
-            >>> self.fetch('table_name', 1)
+            >>> print(self.fetch('table_name', 1))
 
         Args:
             table (str): Fetch a row from this table.

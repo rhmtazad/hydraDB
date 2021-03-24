@@ -61,15 +61,13 @@ class Schema:
 
         Examples:
             >>> self.execute("")
-            >>> self.execute('select * from tbl')
+            >>> self.execute('create table tbl_name')
 
         Args:
             query (str): Execute the given query.
 
         Returns:
-            Returns the fetch result after executing a query.
-            To return the fetch result, the second parameter
-            must be set to True.
+            Returns nothing.
         """
 
         self.__con.execute(query)
@@ -218,10 +216,10 @@ class Schema:
         Fetch a table from the database.
 
         Note:
-            Pass the table name as a parameter
+            Pass the table name as a parameter.
 
         Examples:
-            >>> self.fetch_table('table_name')
+            >>> print(self.fetch_table('table_name'))
 
         Args:
             table (str): Fetch data from this table.
@@ -347,7 +345,7 @@ class Schema:
             and the column name(s) in the next parameters.
 
         Examples:
-            >>> self.fetch_columns('tbl', 'col1', 'col2')
+            >>> print(self.fetch_columns('tbl', 'col1', 'col2'))
 
         Args:
             table (str): Fetch column(s) from this table.
@@ -446,7 +444,7 @@ class Schema:
             and the row ID in the second parameter.
 
         Examples:
-            >>> self.fetch_row('table_name', 1)
+            >>> print(self.fetch_row('table_name', 1))
 
         Args:
             table (str): Fetch a row from this table.
