@@ -173,7 +173,7 @@ class Row:
         """
 
         # query for fetching a row from a table
-        query = f'SELECT * FROM {table} WHERE {column} = {value}'
+        query = f'SELECT * FROM {table} WHERE {column} = "{value}"'
 
         # execute the query and return the result
         return self.__con.fetch(query)
