@@ -215,3 +215,31 @@ class Row:
 
         # return the fetch result after executing the query
         return self.__con.fetch(query)
+
+    def count(self, table, column, value):
+        """
+        Count number of rows for a column with a given value.
+
+        Note:
+            Pass the table name in the first parameter
+            and the column name in the second parameter.
+            The function counts the number of the rows based
+            on the value passed in the third parameter.
+
+        Examples:
+            >>> print(self.count('tbl', 'col', 'val'))
+
+        Args:
+            table (str): Count rows from this table.
+            column (str): Count rows based on this column.
+            value (str): Count rows based on this value.
+
+        Returns:
+            Returns the number of rows after executing the query.
+        """
+
+        # query for counting number of rows based on a column's value
+        query = f'SELECT COUNT(*) FROM {table} WHERE {column} = "{value}"'
+
+        # return the number of rows after executing the query
+        return str(self.__con.fetch(query))[2:-3]

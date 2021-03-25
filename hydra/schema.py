@@ -502,3 +502,28 @@ class Schema:
 
         # return the fetch result after executing the query
         return self.__row.fetch_cells(table, row_id, *columns)
+
+    def count_rows(self, table, column, value):
+        """
+        Count number of rows for a column with a given value.
+
+        Note:
+            Pass the table name in the first parameter
+            and the column name in the second parameter.
+            The function counts the number of the rows based
+            on the value passed in the third parameter.
+
+        Examples:
+            >>> print(self.count_rows('tbl', 'col', 'val'))
+
+        Args:
+            table (str): Count rows from this table.
+            column (str): Count rows based on this column.
+            value (str): Count rows based on this value.
+
+        Returns:
+            Returns the number of rows after executing the query.
+        """
+
+        # return the number of rows after executing the query
+        return self.__row.count(table, column, value)
