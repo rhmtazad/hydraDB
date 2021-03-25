@@ -455,26 +455,28 @@ class Schema:
 
         self.__row.update(table, row_id, **data)
 
-    def fetch_row(self, table, row_id):
+    def fetch_row(self, table, column, value):
         """
         Fetch a row from a table
 
         Note:
             Pass the table name in the first parameter
-            and the row ID in the second parameter.
+            and the column name along with its value in
+            the second and third parameter.
 
         Examples:
-            >>> print(self.fetch_row('table_name', 1))
+            >>> print(self.fetch_row(table='tbl', col1='something'))
 
         Args:
             table (str): Fetch a row from this table.
-            row_id (int): Fetch a row with this ID.
+            column (str): Fetch a row based on this column.
+            value (str): Fetch a row based on this value.
 
         Returns:
             Returns the fetch result after executing the query.
         """
 
-        return self.__row.fetch(table, row_id)
+        return self.__row.fetch(table, column, value)
 
     def fetch_cells(self, table, row_id, *columns):
         """

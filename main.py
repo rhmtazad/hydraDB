@@ -31,7 +31,7 @@ if __name__ == '__main__':
     # print(db.fetch_table(table='student'))
 
     # # fetch a row from a table
-    # print(db.fetch_row(table='student', row_id=1))
+    # print(db.fetch_row(table='student', column='age', value='25'))
 
     # # fetch a column from a table
     # print(db.fetch_columns('student', 'name', 'age'))

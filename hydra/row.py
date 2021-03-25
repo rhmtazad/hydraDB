@@ -151,30 +151,29 @@ class Row:
         # execute the query
         self.__con.execute(query)
 
-    def fetch(self, table, row_id):
+    def fetch(self, table, column, value):
         """
         Fetch a row from a table
 
         Note:
             Pass the table name in the first parameter
-            and the row ID in the second parameter.
+            and the column name along with its value in
+            the second and third parameter.
 
         Examples:
-            >>> print(self.fetch('table_name', 1))
+            >>> print(self.fetch(table='tbl', col1='something'))
 
         Args:
             table (str): Fetch a row from this table.
-            row_id (int): Fetch a row with this ID.
+            column (str): Fetch a row based on this column.
+            value (str): Fetch a row based on this value.
 
         Returns:
             Returns the fetch result after executing the query.
         """
 
-        # structure for the primary key
-        primary_key = f'{table}_id'
-
         # query for fetching a row from a table
-        query = f'SELECT * FROM {table} WHERE {primary_key} = {row_id}'
+        query = f'SELECT * FROM {table} WHERE {column} = {value}'
 
         # execute the query and return the result
         return self.__con.fetch(query)
