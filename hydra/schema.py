@@ -455,28 +455,34 @@ class Schema:
 
         self.__row.update(table, row_id, **data)
 
-    def fetch_row(self, table, column, value):
+    def fetch_row(self, table, **col_val):
         """
-        Fetch a row from a table
+        Fetch rows for columns with the given values.
 
         Note:
-            Pass the table name in the first parameter
-            and the column name along with its value in
-            the second and third parameter.
+            Pass the table name in the first parameter and the
+            columns along with their values in the other parameters.
+            The function return the rows based on the columns
+            that have the given values.
 
         Examples:
-            >>> print(self.fetch_row(table='tbl', col1='something'))
+            >>> print(self.fetch_row('tbl', col1='val1', col2='val2'))
 
         Args:
-            table (str): Fetch a row from this table.
-            column (str): Fetch a row based on this column.
-            value (str): Fetch a row based on this value.
+            table (str): Fetch rows from this table.
+            **col_val (:obj:`kwargs`): Fetch rows based on columns and values
+
+
+        Keyword Args:
+            **col_val (:obj:`kwargs`): The first part in key=val represents
+                the column name and the second part represents the value for
+                that column.
 
         Returns:
-            Returns the fetch result after executing the query.
+            Returns the rows after executing the query.
         """
 
-        return self.__row.fetch(table, column, value)
+        return self.__row.fetch(table, **col_val)
 
     def fetch_cells(self, table, row_id, *columns):
         """
