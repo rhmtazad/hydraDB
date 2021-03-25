@@ -68,7 +68,7 @@ class Table:
             query = f'''
                 CREATE TABLE IF NOT EXISTS {table} (
                 {primary_key} INTEGER PRIMARY KEY AUTOINCREMENT
-            );'''
+            )'''
 
             # execute the query
             self.__con.execute(query)
@@ -93,7 +93,7 @@ class Table:
         # iterate through **tables parameter and execute the query
         for table in tables:
             # query for dropping a table
-            query = f"DROP TABLE IF EXISTS {table};"
+            query = f"DROP TABLE IF EXISTS {table}"
 
             # execute the query
             self.__con.execute(query)
@@ -119,7 +119,7 @@ class Table:
         """
 
         # query for renaming a table
-        query = f"ALTER TABLE {old_name} RENAME TO {new_name};"
+        query = f"ALTER TABLE {old_name} RENAME TO {new_name}"
 
         # execute the query
         self.__con.execute(query)
@@ -194,7 +194,7 @@ class Table:
         # query for inserting selected column from one table to another
         query = f'''
             INSERT INTO {new_tbl}({col}) SELECT {col} FROM {origin_tbl}
-        ;'''
+        '''
 
         # execute the query
         self.__con.execute(query)

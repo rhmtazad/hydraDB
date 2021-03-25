@@ -68,7 +68,7 @@ class Row:
         query = f'''
            INSERT INTO {table} ({columns})
            VALUES ({values})
-        ;'''
+        '''
 
         # execute the query
         self.__con.execute(query)
@@ -99,7 +99,7 @@ class Row:
         query = f'''
            DELETE FROM {table}
            WHERE {primary_key} = {row_id}
-        ;'''
+        '''
 
         # execute the query
         self.__con.execute(query)
@@ -146,7 +146,7 @@ class Row:
             UPDATE {table}
             SET {columns_values}
             WHERE {primary_key} = {row_id}
-        ;'''
+        '''
 
         # execute the query
         self.__con.execute(query)

@@ -357,6 +357,26 @@ class Schema:
 
         return self.__col.fetch(table, *columns)
 
+    def fetch_column_names(self, table):
+        """
+        Fetch column names from a table.
+
+        Note:
+            Pass the table name as a parameter to get the
+            list of columns that exists within a table.
+
+        Examples:
+            >>> print(self.fetch_column_names('tbl1'))
+
+        Args:
+            table (str): Fetch column names from this table.
+
+        Returns:
+            Returns the columns names after executing the query.
+        """
+
+        return self.__col.fetch_names(table)
+
     def insert_row(self, table, **data):
         """
         Insert data in a table.

@@ -62,14 +62,17 @@ class Column:
 
         # iterate through **columns and execute the query
         for column, data_type in columns.items():
-            # query for adding column(s) in a table
-            query = f'''
-                ALTER TABLE {table}
-                ADD COLUMN {column} {data_type}
-            ;'''
+            # skip the already existing columns
+            if column not in self.fetch_names(table):
+                # query for adding column(s) in a table
+                query = f'''
+                    ALTER TABLE {table}
+                    ADD COLUMN {column} {data_type}
+                '''
 
-            # execute the query
-            self.__con.execute(query)
+                # execute the query
+                self.__con.execute(query)
+                # print(query)
 
     def add_fk(self, table, column, reference_tbl, reference_col):
         """
@@ -98,7 +101,7 @@ class Column:
             ALTER TABLE {table}
             ADD COLUMN {column} INTEGER
             REFERENCES {reference_tbl}({reference_col})
-        ;'''
+        '''
 
         # execute the query
         self.__con.execute(query)
@@ -129,7 +132,7 @@ class Column:
             ALTER TABLE {table}
             RENAME COLUMN {current_name}
             TO {new_name}
-        ;'''
+        '''
 
         # execute the query
         self.__con.execute(query)
@@ -161,3 +164,29 @@ class Column:
 
         # return the fetch result after executing the query.
         return self.__con.fetch(query)
+
+    def fetch_names(self, table):
+        """
+        Fetch column names from a table.
+
+        Note:
+            Pass the table name as a parameter to get the
+            list of columns that exists within a table.
+
+        Examples:
+            >>> print(self.fetch_names('tbl1'))
+
+        Args:
+            table (str): Fetch column names from this table.
+
+        Returns:
+            Returns the columns names after executing the query.
+        """
+
+        # query for getting the column names
+        query = f'''
+            PRAGMA table_info({table})
+        '''
+
+        # return the column names after executing the query
+        return [i[1] for i in self.__con.fetch(query)]

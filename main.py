@@ -35,3 +35,6 @@ if __name__ == '__main__':
 
     # fetch a row from a table
     print(db.fetch_row(table='student', row_id=1))
+
+    # fetch the column names in a table
+    print(db.fetch_column_names('student'))
