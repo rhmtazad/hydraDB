@@ -216,30 +216,42 @@ class Row:
         # return the fetch result after executing the query
         return self.__con.fetch(query)
 
-    def count(self, table, column, value):
+    def count(self, table, **col_val):
         """
-        Count number of rows for a column with a given value.
+        Count number of rows for columns with the given values.
 
         Note:
-            Pass the table name in the first parameter
-            and the column name in the second parameter.
-            The function counts the number of the rows based
-            on the value passed in the third parameter.
+            Pass the table name in the first parameter and the
+            columns along with their values in the other parameters.
+            The function counts the number of rows based on the columns
+            that have the given values.
 
         Examples:
-            >>> print(self.count('tbl', 'col', 'val'))
+            >>> print(self.count('tbl', col1='val1', col2='val2'))
 
         Args:
             table (str): Count rows from this table.
-            column (str): Count rows based on this column.
-            value (str): Count rows based on this value.
+            **col_val (:obj:`kwargs`): Count rows based on columns and values
+
+
+        Keyword Args:
+            **col_val (:obj:`kwargs`): The first part in key=val represents
+                the column name and the second part represents the value for
+                that column.
 
         Returns:
             Returns the number of rows after executing the query.
         """
 
+        # store column in (val) conditions for query
+        # join the columns along with their values and
+        # remove the last extra 'AND' word by using .rsplit(' ', 2)[0]
+        col_in_val = str(
+            "".join(f"{col} IN ('{val}') AND " for (col, val) in col_val.items())
+        ).rsplit(' ', 2)[0]
+
         # query for counting number of rows based on a column's value
-        query = f'SELECT COUNT(*) FROM {table} WHERE {column} = "{value}"'
+        query = f'SELECT COUNT(*) FROM {table} WHERE {col_in_val}'
 
         # return the number of rows after executing the query
         return str(self.__con.fetch(query))[2:-3]

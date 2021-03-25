@@ -503,27 +503,32 @@ class Schema:
         # return the fetch result after executing the query
         return self.__row.fetch_cells(table, row_id, *columns)
 
-    def count_rows(self, table, column, value):
+    def count_rows(self, table, **col_val):
         """
-        Count number of rows for a column with a given value.
+        Count number of rows for columns with the given values.
 
         Note:
-            Pass the table name in the first parameter
-            and the column name in the second parameter.
-            The function counts the number of the rows based
-            on the value passed in the third parameter.
+            Pass the table name in the first parameter and the
+            columns along with their values in the other parameters.
+            The function counts the number of rows based on the columns
+            that have the given values.
 
         Examples:
-            >>> print(self.count_rows('tbl', 'col', 'val'))
+            >>> print(self.count_rows('tbl', col1='val1', col2='val2'))
 
         Args:
             table (str): Count rows from this table.
-            column (str): Count rows based on this column.
-            value (str): Count rows based on this value.
+            **col_val (:obj:`kwargs`): Count rows based on columns and values
+
+
+        Keyword Args:
+            **col_val (:obj:`kwargs`): The first part in key=val represents
+                the column name and the second part represents the value for
+                that column.
 
         Returns:
             Returns the number of rows after executing the query.
         """
 
         # return the number of rows after executing the query
-        return self.__row.count(table, column, value)
+        return self.__row.count(table, **col_val)

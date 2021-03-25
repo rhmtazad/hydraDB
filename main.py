@@ -43,4 +43,4 @@ if __name__ == '__main__':
     # print(db.fetch_cells('student', 1, 'name'))
 
     # fetch number of rows based on a column's value
-    # print(db.count_row('student', 'age', '25'))
+    # print(db.count_rows('student', age=47, name='R'))
