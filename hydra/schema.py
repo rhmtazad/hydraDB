@@ -475,3 +475,28 @@ class Schema:
         """
 
         return self.__row.fetch(table, row_id)
+
+    def fetch_cells(self, table, row_id, *columns):
+        """
+        Fetch specific cells within a row
+
+        Note:
+            Pass the table name in the first parameter,
+            and the primary key in the second parameter.
+            Pass one or more column names in the third
+            parameter.
+
+        Examples:
+            >>> print(self.fetch_cells('tbl', 1, 'col1', 'col2'))
+
+        Args:
+            table (str): Fetch cells from this table.
+            row_id (int): Fetch cells with this primary key.
+            *columns (str): Fetch cells from these columns.
+
+        Returns:
+            Returns the fetch result after executing the query.
+        """
+
+        # return the fetch result after executing the query
+        return self.__row.fetch_cells(table, row_id, *columns)
