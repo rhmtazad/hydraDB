@@ -1,6 +1,18 @@
 Change Log
 ==============================================
 
+2.4 (3/4/2021)
+-----------------------------------------------
+- Fifth Release
+
+- Fetch one or more columns from a table
+- Fetch rows based on one or multiple columns
+- Fetch a cell within a specifi row
+- Fetch column names from a table
+- Count the number of rows based on columns
+- Fixed some documentation issues
+
+
 2.3 (23/3/2021)
 -----------------------------------------------
 - Fourth Release
