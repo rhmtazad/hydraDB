@@ -21,7 +21,9 @@ This API applies some design patterns of object-oriented programming to make it 
 
 **You can install through pip or by copying inside your project folder**
 
-    pip install hydradb
+```console
+pip install hydradb
+```
 
 ----------------------------------------------------------------------------------------------
 
@@ -29,17 +31,21 @@ This API applies some design patterns of object-oriented programming to make it 
 
 **To import the package inside your project:**
 
-    from hydra import Schema
-    
+```python
+from hydra import Schema
+```
+
 **To have access to the operations:**
 >*If the name or location is not passed  as parameters, it will set them to default.*
 >*The default for the name is 'main' and the default for the directory is the project directory.*
 >*The database file will be saved with '.db' extension.*
 
-    name = 'myDB'
-    location = 'C:\Projects\Python\'
-    
-    db = Schema(name, location)
+```python
+name = 'myDB'
+location = 'C:\Projects\Python\'
+
+db = Schema(name, location)
+```
 
 ----------------------------------------------------------------------------------------------
 
@@ -47,11 +53,15 @@ This API applies some design patterns of object-oriented programming to make it 
 
 **Execute a query from the database:**
 
-    execute(query) # execute('select * from tbl')
+```python
+execute(query) # execute('select * from tbl')
+```
 
 **Fetch a query from the database:**
 
-    fetch(query) # fetch('select * from tbl')
+```python
+fetch(query) # fetch('select * from tbl')
+```
 
 ----------------------------------------------------------------------------------------------
 
@@ -59,27 +69,39 @@ This API applies some design patterns of object-oriented programming to make it 
 
 **Add one or more tables in database:**
 
-    add_table(*tables) # add_table('tbl1', 'tbl2', tbl3')
+```python
+add_table(*tables) # add_table('tbl1', 'tbl2', tbl3')
+```
 
 **Drop one or multiple tables from a database:**
 
-    drop_table(*tables) # drop_table('tbl1', 'tbl2', 'tbl3')
+```python
+drop_table(*tables) # drop_table('tbl1', 'tbl2', 'tbl3')
+```
 
 **Rename a table from the database:**
 
-    rename_table(old_name, new_name) # rename_table('old', 'new')
+```python
+rename_table(old_name, new_name) # rename_table('old', 'new')
+```
 
 **Create a table with the given columns:**
 
-    form_table(table, **columns) # form_table(table='tbl', name='text', age='integer')
+```python
+form_table(table, **columns) # form_table(table='tbl', name='text', age='integer')
+```
 
 **Copy a table's data to a new one:**
 
-    copy_table(origin_tbl, new_tbl, **columns) # copy_table('origin', 'new', col1='text')
+```python
+copy_table(origin_tbl, new_tbl, **columns) # copy_table('origin', 'new', col1='text')
+```
 
 **Fetch a table's data from a database:**
 
-    fetch_table(table) # fetch_table('student')
+```python
+fetch_table(table) # fetch_table('student')
+```
 
 ----------------------------------------------------------------------------------------------
 
@@ -87,31 +109,45 @@ This API applies some design patterns of object-oriented programming to make it 
 
 **Add one or more columns to a table:**
 
-    add_column(table, **columns) # add_column('tbl', name='text', age='integer')
-    
+```python
+add_column(table, **columns) # add_column('tbl', name='text', age='integer')
+```
+
 **Drop one or more columns from a table:**
 
-    drop_column(table, **columns) # drop_column('tbl', name='text', age='integer')
-    
+```python
+drop_column(table, **columns) # drop_column('tbl', name='text', age='integer')
+```
+
 **Add a column to a table and set it as a foreign key:**
 
-    add_fk(table, column, reference_tbl, reference_col)
-    
+```python
+add_fk(table, column, reference_tbl, reference_col)
+```
+
 **Rename a column from a table:**
 
-    rename_column(tbl, current_name, new_name)
-    
+```python
+rename_column(tbl, current_name, new_name)
+```
+
 **Fetch one or more columns from a table:**
 
-    fetch_columns(table, *columns) # fetch_columns('tbl', 'name', 'age')
+```python
+fetch_columns(table, *columns) # fetch_columns('tbl', 'name', 'age')
+```
 
 **Fetch column names from a table:**
 
-    fetch_column_names(table)
+```python
+fetch_column_names(table)
+```
 
 **Filter based on one or more column's values:**
 
-    filter_column(table, **col_val) # filter_column('tbl', name='R', age=25)
+```python
+filter_column(table, **col_val) # filter_column('tbl', name='R', age=25)
+```
 
 ----------------------------------------------------------------------------------------------
 
@@ -119,23 +155,33 @@ This API applies some design patterns of object-oriented programming to make it 
 
 **Insert a row in a table:**
 
-    insert_row(table, **data) # insert_row('tbl', name='R', age='25')
+```python
+insert_row(table, **data) # insert_row('tbl', name='R', age='25')
+```
 
 **Delete a row from a table:**
 
-    delete_row(table, row_id) # delete_row(table='student', row_id=1)
+```python
+delete_row(table, row_id) # delete_row(table='student', row_id=1)
+```
 
 **Update a row in a table:**
 
-    update_row(table, row_id, **data) # update_row(table='student', row_id=1, name='R')
+```python
+update_row(table, row_id, **data) # update_row(table='student', row_id=1, name='R')
+```
 
 **Fetch one or more cells within a row:**
 
-    fetch_row(table, row_id, *columns)
-    
+```python
+fetch_row(table, row_id, *columns)
+```
+
 **Count number of rows based on columns and their values:**
 
-    count_rows(table, **col_val) # count_rows(table='tbl', name='R', age=25)
+```python
+count_rows(table, **col_val) # count_rows(table='tbl', name='R', age=25)
+```
 
 ----------------------------------------------------------------------------------------------
 
