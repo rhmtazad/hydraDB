@@ -77,7 +77,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
     copy_table(origin_tbl, new_tbl, **columns) # copy_table('origin', 'new', col1='text')
 
-**Fetch a table's data from a database**
+**Fetch a table's data from a database:**
 
     fetch_table(table) # fetch_table('student')
 
@@ -133,7 +133,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
     fetch_cells(table, row_id, *columns)
     
-**Count number of rows based on columns and their values**
+**Count number of rows based on columns and their values:**
 
     count_rows(table, **col_val) # count_rows(table='tbl', name='R', age=25)
 

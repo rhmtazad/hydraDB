@@ -82,7 +82,7 @@ Copy a table's data to a new one:
 
     copy_table(origin_tbl, new_tbl, columns) # copy_table('origin', 'new', col1='text')
 
-Fetch a table's data from a database
+Fetch a table's data from a database:
 
     fetch_table(table) # fetch_table('student')
 
@@ -138,7 +138,7 @@ Fetch one or more cells within a row:
 
     fetch_cells(table, row_id, *columns)
     
-Count number of rows based on columns and their values
+Count number of rows based on columns and their values:
 
     count_rows(table, col_val) # count_rows(table='tbl', name='R', age=25)
 
