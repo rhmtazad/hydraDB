@@ -37,7 +37,7 @@ This API applies some design patterns of object-oriented programming to make it 
 >*The database file will be saved with '.db' extension*
 
     name = 'myDB'
-    location = 'C:\Projects\Python'
+    location = 'C:\Projects\Python\'
     
     db = Schema(name, location)
 
