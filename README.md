@@ -1,6 +1,13 @@
 ## HydraDB v2.4.1
 #### An API for Faster and Easier SQLite/Python Operations
 
+
+[![rhmtazad - hydradb](https://img.shields.io/static/v1?label=rhmtazad&message=hydradb&color=green&logo=github)](https://github.com/rhmtazad/hydradb)
+[![language - python](https://img.shields.io/badge/language-python-81c253?logo=python&logoColor=white)](https://www.python.org/)
+[![installation - pip install hydradb](https://img.shields.io/badge/installation-pip_install_hydradb-green?logo=python&logoColor=white)](https://pypi.org/project/hydradb/)
+[![GitHub version](https://badge.fury.io/py/hydradb.svg)](https://pypi.org/project/hydradb/)
+[![license - MIT](https://img.shields.io/badge/license-MIT-yellow)](https://opensource.org/licenses/MIT)
+
 ----------------------------------------------------------------------------------------------
 
 HydraDB is an API built for Python and SQLite to help build databases faster and easier.
