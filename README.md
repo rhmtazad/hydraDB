@@ -55,7 +55,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-#### Table Operations
+### Table Operations
 
 **Add one or more tables in database:**
 
@@ -83,7 +83,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-#### Column Operations
+### Column Operations
 
 **Add one or more columns to a table:**
 
@@ -111,7 +111,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-#### Row Operations
+### Row Operations
 
 **Insert a row in a table:**
 
