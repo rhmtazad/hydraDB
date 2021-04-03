@@ -1,4 +1,4 @@
-# HydraDB v2.4
+## HydraDB v2.4
 #### An API for Faster and Easier SQLite/Python Operations
 
 ----------------------------------------------------------------------------------------------
