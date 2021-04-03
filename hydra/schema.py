@@ -377,6 +377,35 @@ class Schema:
 
         return self.__col.fetch_names(table)
 
+    def filter_column(self, table, **col_val):
+        """
+        Fetch and filter columns with the given values.
+
+        Note:
+            Pass the table name in the first parameter and the
+            columns along with their values in the other parameters.
+            The function return the rows based on the columns
+            that have the given values.
+
+        Examples:
+            >>> print(self.filter_column('tbl', col1='val1', col2='val2'))
+
+        Args:
+            table (str): Fetch from this table.
+            **col_val (:obj:`kwargs`): Fetch based on columns and values
+
+
+        Keyword Args:
+            **col_val (:obj:`kwargs`): The first part in key=val represents
+                the column name and the second part represents the value for
+                that column.
+
+        Returns:
+            Returns the rows and columns after executing the query.
+        """
+
+        return self.__col.filter(table, **col_val)
+
     def insert_row(self, table, **data):
         """
         Insert data in a table.
@@ -455,36 +484,7 @@ class Schema:
 
         self.__row.update(table, row_id, **data)
 
-    def fetch_row(self, table, **col_val):
-        """
-        Fetch rows for columns with the given values.
-
-        Note:
-            Pass the table name in the first parameter and the
-            columns along with their values in the other parameters.
-            The function return the rows based on the columns
-            that have the given values.
-
-        Examples:
-            >>> print(self.fetch_row('tbl', col1='val1', col2='val2'))
-
-        Args:
-            table (str): Fetch rows from this table.
-            **col_val (:obj:`kwargs`): Fetch rows based on columns and values
-
-
-        Keyword Args:
-            **col_val (:obj:`kwargs`): The first part in key=val represents
-                the column name and the second part represents the value for
-                that column.
-
-        Returns:
-            Returns the rows after executing the query.
-        """
-
-        return self.__row.fetch(table, **col_val)
-
-    def fetch_cells(self, table, row_id, *columns):
+    def fetch_row(self, table, row_id, *columns):
         """
         Fetch specific cells within a row
 
@@ -495,7 +495,7 @@ class Schema:
             parameter.
 
         Examples:
-            >>> print(self.fetch_cells('tbl', 1, 'col1', 'col2'))
+            >>> print(self.fetch_row('tbl', 1, 'col1', 'col2'))
 
         Args:
             table (str): Fetch cells from this table.
@@ -507,7 +507,7 @@ class Schema:
         """
 
         # return the fetch result after executing the query
-        return self.__row.fetch_cells(table, row_id, *columns)
+        return self.__row.fetch(table, row_id, *columns)
 
     def count_rows(self, table, **col_val):
         """
