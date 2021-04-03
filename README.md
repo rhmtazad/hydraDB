@@ -9,7 +9,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-### Requirements
+## Requirements
 
 **To make hydraDB work properly you must have installed:**
 - [Python 3.9] - Latest version of Python
@@ -17,7 +17,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-### Installation
+## Installation
 
 **You can install through pip or by copying inside your project folder**
 
@@ -25,7 +25,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-### How to Import and Use the API
+## How to Import and Use the API
 
 **To import the package inside your project:**
 
@@ -43,7 +43,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-### General Operations
+## General Operations
 
 **Execute a query from the database:**
 
@@ -55,7 +55,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-### Table Operations
+## Table Operations
 
 **Add one or more tables in database:**
 
@@ -83,7 +83,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-### Column Operations
+## Column Operations
 
 **Add one or more columns to a table:**
 
@@ -111,7 +111,7 @@ This API applies some design patterns of object-oriented programming to make it 
 
 ----------------------------------------------------------------------------------------------
 
-### Row Operations
+## Row Operations
 
 **Insert a row in a table:**
 
