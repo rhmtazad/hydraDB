@@ -32,9 +32,9 @@ This API applies some design patterns of object-oriented programming to make it 
     from hydra import Schema
     
 **To have access to the operations:**
->*If the name or lacation is not passed  as parameters, it will set them to defaul*
->*The default for the name is 'main' and the default for the directory is the project directory*
->*The database file will be saved with '.db' extension*
+>*If the name or location is not passed  as parameters, it will set them to default.*
+>*The default for the name is 'main' and the default for the directory is the project directory.*
+>*The database file will be saved with '.db' extension.*
 
     name = 'myDB'
     location = 'C:\Projects\Python\'
