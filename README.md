@@ -2,7 +2,7 @@
 #### An API for Faster and Easier SQLite/Python Operations
 
 
-[![rhmtazad - hydradb](https://img.shields.io/static/v1?label=rhmtazad&message=hydradb&color=whitesmoke&logo=github)](https://github.com/rhmtazad/hydradb)
+[![rhmtazad - hydradb](https://img.shields.io/static/v1?label=rhmtazad&message=hydradb&color=beige&logo=github)](https://github.com/rhmtazad/hydradb)
 [![language - python](https://img.shields.io/badge/language-python-81c253?color=mediumseagreen&logo=python&logoColor=white)](https://www.python.org/)
 [![installation - pip install hydradb](https://img.shields.io/badge/installation-pip_install_hydradb-tomato?logo=python&logoColor=white)](https://pypi.org/project/hydradb/)
 [![GitHub version](https://badge.fury.io/py/hydradb.svg)](https://pypi.org/project/hydradb/)
