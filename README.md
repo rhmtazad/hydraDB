@@ -44,7 +44,7 @@ from hydra import Schema
 name = 'myDB'
 location = 'C:\Projects\Python\'
 
-db = Schema(name, location)
+db = Schema(name, location) # or use Schema() without passing parameter values
 ```
 
 ----------------------------------------------------------------------------------------------
