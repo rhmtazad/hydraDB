@@ -11,9 +11,9 @@
 ----------------------------------------------------------------------------------------------
 
 An API for Python and SQLite to manage databases faster and easier.
-You can now add,modify, or fetch tables, columns, and rows in no time.
-Also, you can execute/fetch custom queries using built-in functions.
-This API applies some design patterns of object-oriented programming to make it reusable.
+You can now add, modify, or fetch tables, columns, and rows easily in no time.
+Also, you can execute/fetch custom queries using built-in functions for your specific problems.
+This API applies some design patterns and principles of OOP for reusability of the codes.
 
 ----------------------------------------------------------------------------------------------
 
