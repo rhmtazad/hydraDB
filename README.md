@@ -1,4 +1,4 @@
-## HydraDB v2.4
+## HydraDB v2.4.1
 #### An API for Faster and Easier SQLite/Python Operations
 
 ----------------------------------------------------------------------------------------------
@@ -109,6 +109,10 @@ This API applies some design patterns of object-oriented programming to make it 
 
     fetch_column_names(table)
 
+**Filter based on one or more column's values:**
+
+    filter_column(table, **col_val) # filter_column('tbl', name='R', age=25)
+
 ----------------------------------------------------------------------------------------------
 
 ## Row Operations
@@ -125,13 +129,9 @@ This API applies some design patterns of object-oriented programming to make it 
 
     update_row(table, row_id, **data) # update_row(table='student', row_id=1, name='R')
 
-**Fetch a row using one or more columns:**
-
-    fetch_row(table, **col_val) # fetch_row('tbl', name='R')
-
 **Fetch one or more cells within a row:**
 
-    fetch_cells(table, row_id, *columns)
+    fetch_row(table, row_id, *columns)
     
 **Count number of rows based on columns and their values:**
 

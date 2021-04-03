@@ -1,4 +1,4 @@
-HydraDB v2.4
+HydraDB v2.4.1
 
 An API for Faster and Easier SQLite/Python Operations
 
@@ -114,6 +114,10 @@ Fetch column names from a table:
 
     fetch_column_names(table)
 
+Filter based on one or more column's values:
+
+    filter_column(table, **col_val) # filter_column('tbl', name='R', age=25)
+
 ----------------------------------------------------------------------------------------------
 
 Row Operations
@@ -136,7 +140,7 @@ Fetch a row using one or more columns:
 
 Fetch one or more cells within a row:
 
-    fetch_cells(table, row_id, *columns)
+    fetch_row(table, row_id, *columns)
     
 Count number of rows based on columns and their values:
 
