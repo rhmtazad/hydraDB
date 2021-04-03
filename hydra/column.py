@@ -72,7 +72,6 @@ class Column:
 
                 # execute the query
                 self.__con.execute(query)
-                # print(query)
 
     def add_fk(self, table, column, reference_tbl, reference_col):
         """
