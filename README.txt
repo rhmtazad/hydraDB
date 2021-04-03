@@ -24,7 +24,7 @@ To make hydraDB work properly you must have installed:
 
 Installation
 
-You can install through pip or by copying inside your project folder
+You can install through pip or by copying 'hydra' package inside your project folder
 
     pip install hydradb
 

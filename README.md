@@ -27,7 +27,7 @@ This API applies some design patterns and principles of OOP for reusability of t
 
 ## Installation
 
-**You can install through pip or by copying inside your project folder**
+**You can install through pip or by copying 'hydra' package inside your project folder**
 
 ```console
 pip install hydradb
