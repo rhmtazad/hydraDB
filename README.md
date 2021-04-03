@@ -10,7 +10,7 @@
 
 ----------------------------------------------------------------------------------------------
 
-HydraDB is an API built for Python and SQLite to help build databases faster and easier.
+An API for Python and SQLite to help build databases faster and easier.
 You can now create/modify tables within seconds and can insert/modify rows in no time.
 This API applies some design patterns of object-oriented programming to make it reusable.
 
