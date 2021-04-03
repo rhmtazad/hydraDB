@@ -134,10 +134,6 @@ Update a row in a table:
 
     update_row(table, row_id, data) # update_row(table='student', row_id=1, name='R')
 
-Fetch a row using one or more columns:
-
-    fetch_row(table, col_val) # fetch_row('tbl', name='R')
-
 Fetch one or more cells within a row:
 
     fetch_row(table, row_id, *columns)
