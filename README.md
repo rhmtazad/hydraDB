@@ -1,4 +1,4 @@
-## HydraDB v3.0.0
+## HydraDB v3.1.1
 #### An API for Faster and Easier SQLite/Python Operations
 
 
