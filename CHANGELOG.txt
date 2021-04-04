@@ -1,6 +1,14 @@
 Change Log
 ===============================================
 
+HydraDB v3.1.1
+-----------------------------------------------
+- 9th Release
+
+- added fetch cell feature
+- added filter row feature
+- fetch_row() now fetches the whole row
+
 HydraDB v3.0.0 (4/4/2021)
 -----------------------------------------------
 - 8th Release

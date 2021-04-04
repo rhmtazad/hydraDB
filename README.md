@@ -182,7 +182,19 @@ update_row(table, row_id, **data) # update_row(table='student', row_id=1, name='
 **Fetch one or more cells within a row:**
 
 ```python
-fetch_row(table, row_id, *columns)
+filter_row(table, row_id, *columns)
+```
+
+**Fetch a cells within a row:**
+
+```python
+fetch_cell(table, row_id, column)
+```
+
+**Fetch a row from a table:**
+
+```python
+fetch_row(table, row_id)
 ```
 
 **Count number of rows based on columns and their values:**

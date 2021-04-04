@@ -484,7 +484,7 @@ class Schema:
 
         self.__row.update(table, row_id, **data)
 
-    def fetch_row(self, table, row_id, *columns):
+    def filter_row(self, table, row_id, *columns):
         """
         Fetch specific cells within a row
 
@@ -495,7 +495,7 @@ class Schema:
             parameter.
 
         Examples:
-            >>> print(self.fetch_row('tbl', 1, 'col1', 'col2'))
+            >>> print(self.filter_row('tbl', 1, 'col1', 'col2'))
 
         Args:
             table (str): Fetch cells from this table.
@@ -507,7 +507,7 @@ class Schema:
         """
 
         # return the fetch result after executing the query
-        return self.__row.fetch(table, row_id, *columns)
+        return self.__row.filter(table, row_id, *columns)
 
     def count_rows(self, table, **col_val):
         """
@@ -538,3 +538,46 @@ class Schema:
 
         # return the number of rows after executing the query
         return self.__row.count(table, **col_val)
+
+    def fetch_cell(self, table, row_id, column):
+        """
+        Fetch a specific cell within a row from a table.
+
+        Note:
+            Pass the table name in the first parameter and the
+            row_id in the second parameter. Also, pass the column
+            name for the desired cell in the third parameter.
+
+        Examples:
+            >>> self.fetch_cell(table='tbl', row_id=1, column='col')
+
+        Args:
+            table (str): Fetch a cell from this table.
+            row_id (int): Fetch a cell from this row.
+            column (str): Fetch a cell from this column.
+
+        Returns:
+            Returns a cell from a table.
+        """
+        return self.__row.cell(table, row_id, column)
+
+    def fetch_row(self, table, row_id):
+        """
+        Fetch a row from a table.
+
+        Note:
+            Pass the table name in the first parameter,
+            and the primary key in the second parameter.
+
+        Examples:
+            >>> print(self.fetch_row('tbl', 1, 'col1', 'col2'))
+
+        Args:
+            table (str): Fetch cells from this table.
+            row_id (int): Fetch cells with this primary key.
+
+        Returns:
+            Returns the fetch result after executing the query.
+        """
+
+        return self.__row.fetch(table, row_id)

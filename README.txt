@@ -1,4 +1,4 @@
-HydraDB v3.0.0
+HydraDB v3.1.1
 
 An API for Faster and Easier SQLite/Python Operations
 
@@ -137,8 +137,16 @@ Update a row in a table:
 
 Fetch one or more cells within a row:
 
-    fetch_row(table, row_id, *columns)
-    
+    filter_row(table, row_id, *columns)
+
+Fetch a cells within a row:
+
+    fetch_cell(table, row_id, column)
+
+Fetch a row from a table:
+
+    fetch_row(table, row_id)
+
 Count number of rows based on columns and their values:
 
     count_rows(table, col_val) # count_rows(table='tbl', name='R', age=25)
