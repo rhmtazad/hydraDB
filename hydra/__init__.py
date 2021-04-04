@@ -1,4 +1,4 @@
-from .schema import Schema
+from hydra.schema import Schema
 
 
 """
