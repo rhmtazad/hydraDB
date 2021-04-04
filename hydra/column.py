@@ -188,7 +188,7 @@ class Column:
         '''
 
         # return the column names after executing the query
-        return [i[1] for i in self.__con.fetch(query)]
+        return [column['name'] for column in self.__con.fetch(query)]
 
     def filter(self, table, **col_val):
         """
