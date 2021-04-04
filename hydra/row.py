@@ -187,7 +187,7 @@ class Row:
         '''
 
         # return the fetch result after executing the query
-        return self.__con.fetch(query)
+        return self.__con.fetch(query)[0]
 
     def count(self, table, **col_val):
         """
@@ -227,4 +227,4 @@ class Row:
         query = f'SELECT COUNT(*) FROM {table} WHERE {col_in_val}'
 
         # return the number of rows after executing the query
-        return str(self.__con.fetch(query))[2:-3]
+        return self.__con.fetch(query)[0]['COUNT(*)']
